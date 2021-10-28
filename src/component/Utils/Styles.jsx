@@ -8,20 +8,26 @@ const Styles = makeStyles({
     margin: "0",
   },
   appContainer: {
-    height: '100vh',
+    display: "flex",
+    flexFlow: "column",
+    minHeight: '100vh',
+    maxWidth: "unset",
     padding: "0",
     margin: "0",
     background: `linear-gradient(to left top, ${Colors.palette.primaryColor} 50%,${Colors.palette.secondaryColor} 50%)`
   },
   // Login, Signup panel
   authCard: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: " translate(-50%, -50%)",
+    flex: 1,
+    margin: "2rem auto",
+    // position: "absolute",
+    // top: "50%",
+    // left: "50%",
+    // transform: " translate(-50%, -50%)",
     borderRadius: "unset !important",
     width: "35vw",
-    height: "85%",
+    height: "-webkit-fill-available"
+    //height: "85%",
   },
   authCardHeader: {
     backgroundColor: `${Colors.palette.primaryColor}`,
@@ -58,12 +64,12 @@ const Styles = makeStyles({
     width: "100%",
     margin: "1rem 0 !important"
   },
-  signUpLink: {
+  routeLink: {
     paddingLeft: "1rem",
     textAlign: "center",
     width: "100%",
   },
-  loginButton: {
+  authButton: {
     width: "50%",
     margin: "auto !important",
     marginTop: "1rem !important",

@@ -32,7 +32,7 @@ const Login = () => {
   let history = useHistory();
 
   //use context
-  const { dispatchLoginUser } = useContext(AccountContext);
+  const { userList, dispatchUserList, errorFlg, setErrorFlg } = useContext(AccountContext);
 
   //private state
   const [user, setUser] = useState({
@@ -40,8 +40,6 @@ const Login = () => {
     password: "",
     showPassword: false,
   });
-
-  const [errorFlg, setErrorFlg] = useState(false);
 
   //methods
   const handleChange = (e, prop) => {
@@ -62,19 +60,48 @@ const Login = () => {
     if (user.email === "" || user.password === "") {
       setErrorFlg(true);
     } else {
-      //check if the user is in the local storage
-
-      dispatchLoginUser({ type: "LOGIN", payload: user });
-      //clear input and error
-      setUser({
-        email: "",
-        password: "",
-        showPassword: false,
-      });
-      setErrorFlg(false);
-      // SUCCESSFULLY LOGIN : route to task manager home
-      history.push("/home");
+      //user validation:
+      //#1 check if the user is in the local storage (email match)
+      const matchUser = userList.users.filter(e => e.email === user.email);
+      console.log(matchUser);
+      if (matchUser.length !== 0) {
+        //#2 password check
+        if (matchUser[0].password != user.password) {
+          alert("Password is incorrect. Please try again.");
+          //clear input and error
+          setUser({
+            email: "",
+            password: "",
+            showPassword: false,
+          });
+          setErrorFlg(false);
+        } else {
+          //LOGIN SUCCESSFUL!
+          dispatchUserList({ type: "LOGIN", payload: user });
+          //clear input and error
+          setUser({
+            email: "",
+            password: "",
+            showPassword: false,
+          });
+          setErrorFlg(false);
+          history.push("/home");
+        }
+      } else {
+        alert("You don't have an account yet. Please create one.");
+        //clear input and error
+        setUser({
+          email: "",
+          password: "",
+          showPassword: false,
+        });
+        setErrorFlg(false);
+      }
     }
+  };
+
+  const clearError = () => {
+    setErrorFlg(false);
   };
 
   return (
@@ -122,7 +149,7 @@ const Login = () => {
 
                 />
                 {/* validation error msg */}
-                {errorFlg && <FormHelperText id="outlined-adornment-password">Email is required</FormHelperText>}
+                {errorFlg && <FormHelperText id="outlined-adornment-email">Email is required</FormHelperText>}
               </FormControl>
 
               {/* Password input */}
@@ -172,7 +199,7 @@ const Login = () => {
               <Button
                 variant="contained"
                 type="submit"
-                className={globalClasses.loginButton}
+                className={globalClasses.authButton}
               >Login</Button>
             </Box>
           </CardContent>
@@ -185,7 +212,8 @@ const Login = () => {
               to={{
                 pathname: "/signup",
               }}
-              className={globalClasses.signUpLink}>Sign up</Link>
+              className={globalClasses.routeLink}
+              onClick={clearError}>Sign up</Link>
           </Typography>
           {/* </CardActions> */}
         </Card>

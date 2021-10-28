@@ -7,29 +7,39 @@ const AccountContext = createContext();
 const AccountProvider = (props) => {
 
   //global state
-  const [globalState, setState] = useState("");
-
-  //initialState
-  const initialState = {
-    userList: {
-      email: "",
-      password: "",
-      showPassword: false
-    },
-    loginUser: {
-      email: "",
-      password: "",
-      showPassword: false
-    }
-  };
+  const [errorFlg, setErrorFlg] = useState(false);
 
   //reducer methods
-  const [loginUser, dispatchLoginUser] = useReducer(AccountReducer, initialState);
+  const [userList, dispatchUserList] = useReducer(AccountReducer, [], () => {
+    const localStorageUserData = localStorage.getItem("userList");
+    console.log(JSON.parse(localStorageUserData));
+    return {
+      users: localStorageUserData ? JSON.parse(localStorageUserData) : [{
+        name: "admin",
+        email: "admin@gmail.com",
+        password: "admin123",
+        showPassword: false,
+      }],
+      loginUser: {
+        email: "",
+        password: "",
+        showPassword: false
+      }
+    };
+  });
+
+  //local storage
+  useEffect(() => {
+    localStorage.setItem("userList", JSON.stringify(userList.users));
+  }, [userList.users]);
+
 
   return (
     <AccountContext.Provider value={{
-      loginUser,
-      dispatchLoginUser
+      userList,
+      dispatchUserList,
+      errorFlg,
+      setErrorFlg
     }}>
       {props.children}
     </AccountContext.Provider>
