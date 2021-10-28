@@ -12,7 +12,6 @@ const AccountProvider = (props) => {
   //reducer methods
   const [userList, dispatchUserList] = useReducer(AccountReducer, [], () => {
     const localStorageUserData = localStorage.getItem("userList");
-    console.log(JSON.parse(localStorageUserData));
     return {
       users: localStorageUserData ? JSON.parse(localStorageUserData) : [{
         name: "admin",

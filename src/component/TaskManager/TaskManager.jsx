@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import "./TaskManager.scss";
 import { AccountContext } from "../../context/AccountContext";
 
 const TaskManager = () => {

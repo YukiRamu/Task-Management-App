@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import "./Login.scss";
 import { Link, useHistory } from 'react-router-dom';
 import {
   Container,
@@ -69,39 +68,35 @@ const Login = () => {
         if (matchUser[0].password != user.password) {
           alert("Password is incorrect. Please try again.");
           //clear input and error
-          setUser({
-            email: "",
-            password: "",
-            showPassword: false,
-          });
-          setErrorFlg(false);
+          clearError();
+          clearInput();
         } else {
           //LOGIN SUCCESSFUL!
           dispatchUserList({ type: "LOGIN", payload: user });
           //clear input and error
-          setUser({
-            email: "",
-            password: "",
-            showPassword: false,
-          });
-          setErrorFlg(false);
+          clearError();
+          clearInput();
           history.push("/home");
         }
       } else {
         alert("You don't have an account yet. Please create one.");
         //clear input and error
-        setUser({
-          email: "",
-          password: "",
-          showPassword: false,
-        });
-        setErrorFlg(false);
+        clearError();
+        clearInput();
       }
     }
   };
 
   const clearError = () => {
     setErrorFlg(false);
+  };
+
+  const clearInput = () => {
+    setUser({
+      email: "",
+      password: "",
+      showPassword: false,
+    });
   };
 
   return (

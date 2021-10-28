@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import "./SignUp.scss";
 import { Link, useHistory } from 'react-router-dom';
 import {
   Container,
@@ -64,27 +63,35 @@ const SignUp = () => {
     } else {
       //check if the user is already in the local storage (email match)
       const matchUser = userList.users.filter(e => e.email === newUser.email);
-
-
-      //つづき
-
-
-      dispatchUserList({ type: "SIGNUP", payload: newUser });
-      //clear input and error
-      setNewUser({
-        name: "",
-        email: "",
-        password: "",
-        showPassword: false,
-      });
-      setErrorFlg(false);
-      //SIGNUP SUCCESSFUL!
-      history.push("/login");
+      console.log(matchUser);
+      if (matchUser.length !== 0) {
+        alert("The email is already registered.");
+        //clear input and error
+        clearError();
+        clearInput();
+      } else {
+        //SIGNUP SUCCESSFUL!
+        dispatchUserList({ type: "SIGNUP", payload: newUser });
+        //clear input and error
+        clearError();
+        clearInput();
+        //nagivate to login page
+        history.push("/login");
+      }
     }
   };
 
   const clearError = () => {
     setErrorFlg(false);
+  };
+
+  const clearInput = () => {
+    setNewUser({
+      name: "",
+      email: "",
+      password: "",
+      showPassword: false,
+    });
   };
 
   return (
