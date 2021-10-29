@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {
-  Container,
-} from "@material-ui/core";
+import { Container} from "@material-ui/core";
 import {
   Box,
   Card,

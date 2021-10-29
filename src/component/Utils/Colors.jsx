@@ -3,9 +3,12 @@ import { createTheme } from '@material-ui/core/styles';
 const Colors = createTheme({
   palette: {
     primaryColor: "#9c27b0",
-    primaryColorDark: "#0069d9",
+    primaryColorDark: "#7b1fa2",
     secondaryColor: "#e3e6f1",
-    white: "white"
+    thirdColor:"#ffab40",
+    thirdColorDark:"#eea03e ",
+    white: "white",
+    gray:"#00000042",
     // primary: {
     //   light: '#757ce8',
     //   main: '#3f50b5',

@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useState, useEffect } from 'react';
 import AccountReducer from '../reducer/AccountReducer';
+import TaskReducer from "../reducer/TaskReducer";
 
 //create context
 const AccountContext = createContext();
@@ -27,16 +28,31 @@ const AccountProvider = (props) => {
     };
   });
 
+  const [taskList, dispatchTaskList] = useReducer(TaskReducer, [], () => {
+    const localStorageTaskData = localStorage.getItem("taskList");
+    return {
+      tasks: localStorageTaskData ? JSON.parse(localStorageTaskData) : [{
+        taskName: "",
+        description: "",
+      }],
+    };
+  });
+
   //local storage
   useEffect(() => {
     localStorage.setItem("userList", JSON.stringify(userList.users));
   }, [userList.users]);
 
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList.tasks));
+  }, [taskList.tasks]);
 
   return (
     <AccountContext.Provider value={{
       userList,
       dispatchUserList,
+      taskList,
+      dispatchTaskList,
       errorFlg,
       setErrorFlg
     }}>
