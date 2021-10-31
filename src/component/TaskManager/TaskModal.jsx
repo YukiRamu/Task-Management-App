@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { MdAddCircle, MdCancel } from "react-icons/md";
 import Styles from '../Utils/Styles';
-import uuid from 'react-uuid'
+import uuid from 'react-uuid';
 
 const TaskModal = () => {
 
@@ -98,6 +98,7 @@ const TaskModal = () => {
                 {/* validation error msg */}
                 {errorFlg && <FormHelperText id="outlined-adornment-title">Task is required</FormHelperText>}
               </FormControl>
+
 
               {/* Description input */}
               <FormControl
