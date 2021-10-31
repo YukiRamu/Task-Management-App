@@ -20,6 +20,8 @@ const TaskManager = () => {
   //use context
   const { taskList, dispatchTaskList, errorFlg, setErrorFlg } = useContext(AccountContext);
 
+  console.log("tasklist", taskList);
+
   //use style component
   const globalClasses = Styles();
 
@@ -37,10 +39,8 @@ const TaskManager = () => {
         <Grid
           container
           direction="row"
-          justifyContent="center"
+          //justifyContent="center"
           alignItems="center"
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 1, sm: 8, md: 12 }}
           className={globalClasses.taskList}>
 
           {/* {Array.from(Array(6)).map((_, index) => (
@@ -56,7 +56,7 @@ const TaskManager = () => {
 
           <Grid
             item
-            xs={1} sm={4} md={3} lg={4}
+            xs={1} sm={2} md={3} lg={4}
             className={globalClasses.taskItem}
           >
             <MdModeEdit
@@ -67,50 +67,16 @@ const TaskManager = () => {
               className={globalClasses.deleteBtn}
             //onClick={handleClose}
             />
-            <Typography variant="h5" component="p">
+            <Typography
+              variant="h5"
+              component="p"
+              className={globalClasses.taskTitle}>
               Task Title
             </Typography>
             <Typography variant="h6" component="p">
               Task Description
             </Typography>
           </Grid>
-
-          <Grid item xs={1} sm={4} md={3} lg={4}>
-            <Typography variant="h5" component="p">
-              Task Title
-            </Typography>
-            <Typography variant="h6" component="p">
-              Task Description
-            </Typography>
-          </Grid>
-
-          <Grid item xs={1} sm={4} md={3} lg={4}>
-            <Typography variant="h5" component="p">
-              Task Title
-            </Typography>
-            <Typography variant="h6" component="p">
-              Task Description
-            </Typography>
-          </Grid>
-
-          <Grid item xs={1} sm={4} md={3} lg={4}>
-            <Typography variant="h5" component="p">
-              Task Title
-            </Typography>
-            <Typography variant="h6" component="p">
-              Task Description
-            </Typography>
-          </Grid>
-
-          <Grid item xs={1} sm={4} md={3} lg={4}>
-            <Typography variant="h5" component="p">
-              Task Title
-            </Typography>
-            <Typography variant="h6" component="p">
-              Task Description
-            </Typography>
-          </Grid>
-
 
         </Grid>
 

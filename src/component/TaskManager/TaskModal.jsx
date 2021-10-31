@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { MdAddCircle, MdCancel } from "react-icons/md";
 import Styles from '../Utils/Styles';
+import uuid from 'react-uuid'
 
 const TaskModal = () => {
 
@@ -41,6 +42,7 @@ const TaskModal = () => {
   const createTask = (e) => {
     e.preventDefault();
     console.log("submit");
+    //dispatch
   };
 
   return (

@@ -11,6 +11,7 @@ const Colors = createTheme({
     gray: "#00000042",
     gray2: "#d5d6da",
     red: "#f44336",
+    redDark: "#c6392f",
   },
 });
 

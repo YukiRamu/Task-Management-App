@@ -103,17 +103,61 @@ const Styles = makeStyles({
     minHeight: '100vh',
     maxWidth: "unset",
     padding: "0",
-    paddingTop: "100px",
+    paddingTop: "80px",
     margin: "0",
     backgroundColor: `${Colors.palette.secondaryColor} !important`,
   },
   taskList: {
     //flex: "1",
-    gridGap: "0.5rem",
+    gridGap: "1rem",
+    margin: "0 auto",
+    width: "95% !important"
   },
   taskItem: {
+    position: "relative",
     boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
     backgroundColor: `${Colors.palette.gray2} !important`,
+    padding: "2rem !important",
+    minHeight: "30vh"
+  },
+  taskTitle: {
+    fontWeight: "bold !important",
+    marginTop: "2rem",
+  },
+  editBtn: {
+    position: "absolute",
+    top: "5%",
+    right: "20%",
+    marginRight: "0.5rem",
+    padding: "0.5rem",
+    minWidth: "unset !important",
+    minHeight: "unset",
+    width: "25px",
+    height: "25px",
+    display: "block !important",
+    borderRadius: "50% !important",
+    lineHeight: "inherit !important",
+    textTransform: "unset !important",
+    backgroundColor: `${Colors.palette.thirdColor} !important`,
+    '&:hover, &:focus': { backgroundColor: `${Colors.palette.thirdColorDark} !important` },
+    boxShadow: "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"
+  },
+  deleteBtn: {
+    position: "absolute",
+    top: "5%",
+    right: "5%",
+    minWidth: "unset !important",
+    minHeight: "unset",
+    padding: "0.5rem",
+    width: "25px",
+    height: "25px",
+    display: "block !important",
+    borderRadius: "50% !important",
+    lineHeight: "inherit !important",
+    textTransform: "unset !important",
+    backgroundColor: `${Colors.palette.red} !important`,
+    '&:hover, &:focus': { backgroundColor: `${Colors.palette.redDark} !important` },
+    boxShadow: "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"
   },
   //modal popup
   modalBtn: {
