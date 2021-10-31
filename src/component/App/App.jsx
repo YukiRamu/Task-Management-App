@@ -5,7 +5,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import './App.scss';
 import TaskManager from "../TaskManager/TaskManager";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";

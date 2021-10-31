@@ -1,12 +1,8 @@
-import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import { AccountContext } from "../../context/AccountContext";
-import { Container } from "@material-ui/core";
 import {
   Button,
   Box,
-  Typography,
-  Grid,
   Card,
   CardHeader,
   CardContent,
@@ -18,8 +14,6 @@ import {
 } from '@mui/material';
 import { MdAddCircle, MdCancel } from "react-icons/md";
 import Styles from '../Utils/Styles';
-import Header from "../Header/Header";
-
 
 const TaskModal = () => {
 
@@ -30,11 +24,24 @@ const TaskModal = () => {
   const globalClasses = Styles();
 
   //private state
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [task, setTask] = useState({
+    title: "",
+    description: ""
+  });
 
   //methods
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleChange = (e, prop) => {
+    setTask({ ...task, [prop]: e.target.value });
+  };
+
+  const createTask = (e) => {
+    e.preventDefault();
+    console.log("submit");
+  };
 
   return (
     <>
@@ -47,8 +54,7 @@ const TaskModal = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        className={globalClasses.modalPopUp}
       >
         <Card sx={{ minWidth: 275 }} className={globalClasses.modalCard}>
           <CardContent className={globalClasses.modalCardContent}>
@@ -67,7 +73,7 @@ const TaskModal = () => {
               component="form"
               noValidate
               className={globalClasses.modalForm}
-            // onSubmit={create}
+              onSubmit={createTask}
             >
               {/* Title input */}
               <FormControl
@@ -84,8 +90,8 @@ const TaskModal = () => {
                   id="outlined-adornment-title"
                   label="Title"
                   placeholder="Enter task title here"
-                // value={task.titla}
-                // onChange={(e) => handleChange(e, "title")}
+                  value={task.title}
+                  onChange={(e) => handleChange(e, "title")}
                 />
                 {/* validation error msg */}
                 {errorFlg && <FormHelperText id="outlined-adornment-title">Task is required</FormHelperText>}
@@ -106,21 +112,26 @@ const TaskModal = () => {
                   id="outlined-adornment-description"
                   label="Description"
                   placeholder="Enter task description here"
-                // value={task.description}
-                // onChange={(e) => handleChange(e, "description")}
-
+                  value={task.description}
+                  onChange={(e) => handleChange(e, "description")}
                 />
                 {/* validation error msg */}
                 {errorFlg && <FormHelperText id="outlined-adornment-description">Description is required</FormHelperText>}
               </FormControl>
 
               {/* Create Button */}
-              <Button
-                variant="contained"
-                type="submit"
-                disabled
-                className={globalClasses.createBtn}
-              >Create</Button>
+              {(task.title === "" || task.description === "") ?
+                <Button
+                  variant="contained"
+                  type="submit"
+                  disabled
+                  className={globalClasses.createBtn}
+                >Create</Button> :
+                <Button
+                  variant="contained"
+                  type="submit"
+                  className={globalClasses.createBtnActive}
+                >Create</Button>}
             </Box>
           </CardContent>
         </Card>

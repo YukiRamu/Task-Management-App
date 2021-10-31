@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import App from './component/App/App';
+import "./index.scss"
 import AccountProvider from "./context/AccountContext";
 
 ReactDOM.render(

@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardContent,
 } from '@mui/material';
-import { MdAddCircle } from "react-icons/md";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 import Styles from '../Utils/Styles';
 import Header from "../Header/Header";
 import TaskModal from './TaskModal';
@@ -28,20 +28,22 @@ const TaskManager = () => {
 
   return (
     <>
-      <Container className={globalClasses.dashBoardContainer}>
-        {/* Header */}
-        <Header />
+      {/* Header */}
+      <Header />
 
-        {/* Task list */}
+      {/* Task list */}
+      <Container className={globalClasses.dashBoardContainer}>
+
         <Grid
           container
           direction="row"
           justifyContent="center"
           alignItems="center"
           spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 1, sm: 8, md: 12 }}>
+          columns={{ xs: 1, sm: 8, md: 12 }}
+          className={globalClasses.taskList}>
 
-          {Array.from(Array(6)).map((_, index) => (
+          {/* {Array.from(Array(6)).map((_, index) => (
             <Grid item xs={1} sm={4} md={3} lg={4} key={index}>
               <Typography variant="h5" component="p">
                 Task Title
@@ -50,14 +52,71 @@ const TaskManager = () => {
                 Task Description
               </Typography>
             </Grid>
-          ))}
+          ))} */}
+
+          <Grid
+            item
+            xs={1} sm={4} md={3} lg={4}
+            className={globalClasses.taskItem}
+          >
+            <MdModeEdit
+              className={globalClasses.editBtn}
+            // onClick={handleClose}
+            />
+            <MdDelete
+              className={globalClasses.deleteBtn}
+            //onClick={handleClose}
+            />
+            <Typography variant="h5" component="p">
+              Task Title
+            </Typography>
+            <Typography variant="h6" component="p">
+              Task Description
+            </Typography>
+          </Grid>
+
+          <Grid item xs={1} sm={4} md={3} lg={4}>
+            <Typography variant="h5" component="p">
+              Task Title
+            </Typography>
+            <Typography variant="h6" component="p">
+              Task Description
+            </Typography>
+          </Grid>
+
+          <Grid item xs={1} sm={4} md={3} lg={4}>
+            <Typography variant="h5" component="p">
+              Task Title
+            </Typography>
+            <Typography variant="h6" component="p">
+              Task Description
+            </Typography>
+          </Grid>
+
+          <Grid item xs={1} sm={4} md={3} lg={4}>
+            <Typography variant="h5" component="p">
+              Task Title
+            </Typography>
+            <Typography variant="h6" component="p">
+              Task Description
+            </Typography>
+          </Grid>
+
+          <Grid item xs={1} sm={4} md={3} lg={4}>
+            <Typography variant="h5" component="p">
+              Task Title
+            </Typography>
+            <Typography variant="h6" component="p">
+              Task Description
+            </Typography>
+          </Grid>
 
 
         </Grid>
 
         {/* Modal */}
         <TaskModal />
-        
+
       </Container>
     </>
   );

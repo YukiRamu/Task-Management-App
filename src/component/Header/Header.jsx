@@ -10,7 +10,7 @@ const Header = () => {
 
   //use context
   const { userList } = useContext(AccountContext);
-  console.log("header component", userList);
+  console.log("header component", userList); //userList.loginUser.email , userList.users (array)
 
   //use style component
   const globalClasses = Styles();

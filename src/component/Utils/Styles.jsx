@@ -6,6 +6,7 @@ const Styles = makeStyles({
   root: {
     padding: "0",
     margin: "0",
+    fontFamily: "'Signika', sans-serif !important"
   },
   appContainer: {
     display: "flex",
@@ -14,7 +15,7 @@ const Styles = makeStyles({
     maxWidth: "unset",
     padding: "0",
     margin: "0",
-    background: `linear-gradient(to left top, ${Colors.palette.primaryColor} 50%,${Colors.palette.secondaryColor} 50%)`
+    background: `linear-gradient(to left top, ${Colors.palette.primaryColor} 50%,${Colors.palette.secondaryColor} 50%)`,
   },
   /* ================ Authentication ================ */
   // Login, Signup panel
@@ -23,13 +24,13 @@ const Styles = makeStyles({
     margin: "2rem auto",
     borderRadius: "unset !important",
     width: "35vw",
-    height: "-webkit-fill-available"
+    height: "-webkit-fill-available",
   },
   authCardHeader: {
     backgroundColor: `${Colors.palette.primaryColor}`,
     color: `${Colors.palette.white}`,
     height: "20vh",
-    textAlign: "center"
+    textAlign: "center",
   },
   authCardContent: {
     padding: "0 !important"
@@ -85,7 +86,8 @@ const Styles = makeStyles({
   },
   headerTxt: {
     color: `${Colors.palette.white}`,
-    marginLeft: "1rem",
+    marginLeft: "1rem !important",
+    //fontFamily: "'Signika', sans-serif !important"
   },
   logoutBtn: {
     color: `${Colors.palette.primaryColor}`,
@@ -101,9 +103,17 @@ const Styles = makeStyles({
     minHeight: '100vh',
     maxWidth: "unset",
     padding: "0",
-    paddingTop: "35px",
+    paddingTop: "100px",
     margin: "0",
     backgroundColor: `${Colors.palette.secondaryColor} !important`,
+  },
+  taskList: {
+    //flex: "1",
+    gridGap: "0.5rem",
+  },
+  taskItem: {
+    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+    backgroundColor: `${Colors.palette.gray2} !important`,
   },
   //modal popup
   modalBtn: {
@@ -122,28 +132,46 @@ const Styles = makeStyles({
     color: `${Colors.palette.primaryColor} !important`,
     '&:hover, &:focus': { color: `${Colors.palette.primaryColorDark} !important` },
   },
+  modalPopUp: {
+    outline: "none !important",
+    border: "none !important",
+    "&:focus": {
+      outline: "none !important",
+    }
+  },
   modalCard: {
-    flex: 1,
+    // position:"absolute",
+    // top:"45%",
+    // left:"50%",
+    // transform:"translate(-45%,-50%)",
+    flex: "1",
     margin: "2rem auto",
-    borderRadius: "unset !important",
-    width: "40vw",
-    height: "-webkit-fill-available",
-    //backgroundColor: `${Colors.palette.secondaryColor}`,
+    width: "45vw",
+    height: "80vh",
+    // height: "-webkit-fill-available",
+    boxShadow: "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px !important",
+    border: "none !important",
+    borderInline: "none !important"
   },
   modalCardContent: {
+    position: "relative",
     padding: "0 !important",
     backgroundColor: `${Colors.palette.secondaryColor}`,
+    height: "inherit"
   },
   modalCardHeader: {
-   // backgroundColor: `${Colors.palette.secondaryColor}`,
+    // backgroundColor: `${Colors.palette.secondaryColor}`,
     height: "20vh",
     textAlign: "center"
   },
   modalClsBtn: {
+    position: "absolute",
+    top: "3%",
+    right: "3%",
     minWidth: "unset !important",
     minHeight: "unset",
-    width: "50px",
-    height: "50px",
+    width: "40px",
+    height: "40px",
     display: "block !important",
     fontSize: "3rem !important",
     borderRadius: "50% !important",
