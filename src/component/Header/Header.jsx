@@ -1,25 +1,31 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import Styles from '../Utils/Styles';
 import {
   Button,
   Typography,
 } from '@mui/material';
-import { AccountContext } from "../../context/AccountContext";
+import { AppContext } from "../../context/AppContext";
 
 const Header = () => {
 
   //use context
-  const { userList } = useContext(AccountContext);
-  console.log("header component", userList); //userList.loginUser.email , userList.users (array)
+  const { userList } = useContext(AppContext);
 
   //use style component
   const globalClasses = Styles();
 
+  //route
+  let history = useHistory();
+
   //method
   const getUserName = () => {
     const targetuser = userList.users.filter(elem => elem.email === userList.loginUser.email);
-    console.log(targetuser)
     return targetuser[0].name;
+  };
+
+  const logout = () => {
+    history.push("/login");
   };
 
   return (
@@ -34,6 +40,7 @@ const Header = () => {
           variant="contained"
           type="button"
           className={globalClasses.logoutBtn}
+          onClick={logout}
         >Log Out</Button>
       </header>
 

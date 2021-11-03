@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './component/App/App';
-import "./index.scss"
-import AccountProvider from "./context/AccountContext";
+import "./index.scss";
+import AppProvider from "./context/AppContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AccountProvider>
+    <AppProvider>
       <App />
-    </AccountProvider>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

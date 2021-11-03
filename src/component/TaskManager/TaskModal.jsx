@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { AccountContext } from "../../context/AccountContext";
+import { AppContext } from "../../context/AppContext";
 import {
   Button,
   Box,
@@ -19,7 +19,7 @@ import uuid from 'react-uuid';
 const TaskModal = () => {
 
   //use context
-  const { taskList, dispatchTaskList, errorFlg, setErrorFlg } = useContext(AccountContext);
+  const { taskList, dispatchTaskList, userList, errorFlg, setErrorFlg } = useContext(AppContext);
 
   //use style component
   const globalClasses = Styles();
@@ -27,8 +27,10 @@ const TaskModal = () => {
   //private state
   const [open, setOpen] = useState(false);
   const [task, setTask] = useState({
+    taskId: uuid(),
     title: "",
-    description: ""
+    description: "",
+    loginUser: userList.loginUser.email
   });
 
   //methods
@@ -43,6 +45,11 @@ const TaskModal = () => {
     e.preventDefault();
     console.log("submit");
     //dispatch
+    dispatchTaskList({ type: "ADD_TASK", payload: task });
+    //close modal
+    handleClose();
+    //clear input
+    setTask({ ...task, title: "", description: "" });
   };
 
   return (

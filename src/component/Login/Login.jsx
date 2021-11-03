@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Container} from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import {
   Box,
   Card,
@@ -18,7 +18,7 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { MdEmail, MdLock } from "react-icons/md";
 import Styles from '../Utils/Styles';
-import { AccountContext } from "../../context/AccountContext";
+import { AppContext } from "../../context/AppContext";
 
 const Login = () => {
 
@@ -29,7 +29,7 @@ const Login = () => {
   let history = useHistory();
 
   //use context
-  const { userList, dispatchUserList, errorFlg, setErrorFlg } = useContext(AccountContext);
+  const { userList, dispatchUserList, errorFlg, setErrorFlg } = useContext(AppContext);
 
   //private state
   const [user, setUser] = useState({

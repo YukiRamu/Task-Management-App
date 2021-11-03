@@ -3,9 +3,9 @@ import AccountReducer from '../reducer/AccountReducer';
 import TaskReducer from "../reducer/TaskReducer";
 
 //create context
-const AccountContext = createContext();
+const AppContext = createContext();
 
-const AccountProvider = (props) => {
+const AppProvider = (props) => {
 
   //global state
   const [errorFlg, setErrorFlg] = useState(false);
@@ -31,10 +31,7 @@ const AccountProvider = (props) => {
   const [taskList, dispatchTaskList] = useReducer(TaskReducer, [], () => {
     const localStorageTaskData = localStorage.getItem("taskList");
     return {
-      tasks: localStorageTaskData ? JSON.parse(localStorageTaskData) : [{
-        taskName: "",
-        description: "",
-      }],
+      tasks: localStorageTaskData ? JSON.parse(localStorageTaskData) : [],
     };
   });
 
@@ -48,7 +45,7 @@ const AccountProvider = (props) => {
   }, [taskList.tasks]);
 
   return (
-    <AccountContext.Provider value={{
+    <AppContext.Provider value={{
       userList,
       dispatchUserList,
       taskList,
@@ -57,8 +54,8 @@ const AccountProvider = (props) => {
       setErrorFlg
     }}>
       {props.children}
-    </AccountContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export { AccountProvider as default, AccountContext };
+export { AppProvider as default, AppContext };

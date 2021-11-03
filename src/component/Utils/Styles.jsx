@@ -159,6 +159,13 @@ const Styles = makeStyles({
     '&:hover, &:focus': { backgroundColor: `${Colors.palette.redDark} !important` },
     boxShadow: "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"
   },
+  msg: {
+    textAlign: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+  },
   //modal popup
   modalBtn: {
     position: "absolute !important",
