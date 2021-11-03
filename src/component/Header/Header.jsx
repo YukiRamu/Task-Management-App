@@ -15,6 +15,13 @@ const Header = () => {
   //use style component
   const globalClasses = Styles();
 
+  //method
+  const getUserName = () => {
+    const targetuser = userList.users.filter(elem => elem.email === userList.loginUser.email);
+    console.log(targetuser)
+    return targetuser[0].name;
+  };
+
   return (
     <>
       <header className={globalClasses.dashBoardHeader}>
@@ -22,7 +29,7 @@ const Header = () => {
           variant="h4"
           component="h1"
           className={globalClasses.headerTxt}>
-          Hello</Typography>
+          Hello {getUserName()}</Typography>
         <Button
           variant="contained"
           type="button"
