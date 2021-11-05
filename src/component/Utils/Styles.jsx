@@ -6,7 +6,7 @@ const Styles = makeStyles({
   root: {
     padding: "0",
     margin: "0",
-    fontFamily: "'Signika', sans-serif !important"
+    fontFamily: "'Signika', sans-serif !important",
   },
   appContainer: {
     display: "flex",
@@ -16,6 +16,7 @@ const Styles = makeStyles({
     padding: "0",
     margin: "0",
     background: `linear-gradient(to left top, ${Colors.palette.primaryColor} 50%,${Colors.palette.secondaryColor} 50%)`,
+    fontFamily: "'Signika', sans-serif !important",
   },
   /* ================ Authentication ================ */
   // Login, Signup panel

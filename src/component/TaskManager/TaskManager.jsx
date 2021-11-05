@@ -22,6 +22,21 @@ const TaskManager = () => {
   //use style component
   const globalClasses = Styles();
 
+  //methods
+  const deleteTask = (id) => {
+    console.log("delete clicked", id);
+    // const deleteItem = taskList.filter(elem => elem.id === id);
+    // console.log(deleteItem);
+    dispatchTaskList({ type: "DELETE_TASK", payload: id });
+
+
+  };
+
+  const editTask = (id) => {
+
+  };
+
+
   return (
     <>
       {/* Header */}
@@ -33,7 +48,6 @@ const TaskManager = () => {
           <Grid
             container
             direction="row"
-            //justifyContent="center"
             alignItems="center"
             className={globalClasses.taskList}>
             {targetTasks.map((elem, index) => (
@@ -46,11 +60,11 @@ const TaskManager = () => {
                 >
                   <MdModeEdit
                     className={globalClasses.editBtn}
-                  // onClick={handleClose}
+                    onClick={() => editTask(elem.taskId)}
                   />
                   <MdDelete
                     className={globalClasses.deleteBtn}
-                  //onClick={handleClose}
+                    onClick={() => deleteTask(elem.taskId)}
                   />
                   <Typography
                     variant="h5"
@@ -58,7 +72,9 @@ const TaskManager = () => {
                     className={globalClasses.taskTitle}>
                     {elem.title}
                   </Typography>
-                  <Typography variant="h6" component="p">
+                  <Typography
+                    variant="h6"
+                    component="p">
                     {elem.description}
                   </Typography>
                 </Grid>

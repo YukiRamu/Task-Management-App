@@ -27,14 +27,18 @@ const TaskModal = () => {
   //private state
   const [open, setOpen] = useState(false);
   const [task, setTask] = useState({
-    taskId: uuid(),
+    taskId: "",
     title: "",
     description: "",
     loginUser: userList.loginUser.email
   });
 
   //methods
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    //set task id
+    setTask({ ...task, taskId: uuid() });
+  };
   const handleClose = () => setOpen(false);
 
   const handleChange = (e, prop) => {
@@ -43,7 +47,8 @@ const TaskModal = () => {
 
   const createTask = (e) => {
     e.preventDefault();
-    console.log("submit");
+
+    console.log(task);
     //dispatch
     dispatchTaskList({ type: "ADD_TASK", payload: task });
     //close modal

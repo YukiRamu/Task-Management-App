@@ -24,6 +24,7 @@ const Login = () => {
 
   //use style component
   const globalClasses = Styles();
+  console.log(globalClasses)
 
   //route
   let history = useHistory();
